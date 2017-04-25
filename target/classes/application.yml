@@ -1,0 +1,46 @@
+#日志记录
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+      hibernate: ERROR
+myyml:
+  root: /home
+  img: /uploaderPath/img
+  name: n1,n2,n3
+ 
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:config/mapper/*.xml
+  configuration:
+    mapUnderscoreToCamelCase: true
+    useColumnLabel: true
+    useGeneratedKeys: true  
+spring:
+  #mvc:
+    #date-format: yyyy-MM-dd HH:mm:ss
+  jackson: 
+    #property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+    date-format: yyyy-MM-dd HH:mm:ss 
+    time-zone:  GMT+8
+  session:
+    store-type: none 
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test
+    username: root
+    password: liliu
+  redis:
+    name: master
+    host: 120.25.228.28
+    password: liliu
+    port: 6379 
+    timeout: 10000
+    maxTotal: 600
+    maxIdle: 300
+    maxWaitMillis: 1000
+    testOnBorrow: true
+    testOnReturn: true
