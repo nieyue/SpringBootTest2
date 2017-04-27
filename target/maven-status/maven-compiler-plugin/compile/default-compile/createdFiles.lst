@@ -1,5 +1,8 @@
 com\nieyue\bean\User.class
+com\nieyue\service\UserService.class
 com\nieyue\controller\UserController.class
+com\nieyue\common\IPCountUtil.class
+com\nieyue\service\impl\UserServiceImpl.class
 com\nieyue\dao\UserDao.class
 com\nieyue\controller\TestController.class
 com\MyApplication.class

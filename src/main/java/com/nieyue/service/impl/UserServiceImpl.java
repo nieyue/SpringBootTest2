@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService{
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
 	public boolean updateUser(User user) {
-		User u = userDao.findUserByName(user.getId(), null);
-		user.setValue(String.valueOf(Integer.valueOf(u.getValue())+1));
+		//User u = userDao.findUserByName(user.getId(), null);
+		//user.setValue(String.valueOf(Integer.valueOf(u.getValue())+1));
 		boolean b = userDao.updateUser(user);
 		return b;
 	}

@@ -12,6 +12,9 @@ myyml:
  
 #mybatis配置
 mybatis:
+  #check-config-location: true
+  #executor-type: batch
+  type-aliases-package: com.nieyue.bean 
   mapper-locations: classpath:config/mapper/*.xml
   configuration:
     mapUnderscoreToCamelCase: true
@@ -34,13 +37,11 @@ spring:
     username: root
     password: liliu
   redis:
-    name: master
-    host: 120.25.228.28
+    host: 118.190.133.146
     password: liliu
     port: 6379 
-    timeout: 10000
-    maxTotal: 600
-    maxIdle: 300
-    maxWaitMillis: 1000
-    testOnBorrow: true
-    testOnReturn: true
+    timeout: 3000
+    pool:
+      min-idle: 50
+      max-idle: 300
+      max-active: 800

@@ -39,8 +39,6 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "/update")
 	public boolean updateUser(@ModelAttribute User user ){
-		User u = userService.findUserByName(user.getId(), null);
-		user.setValue(String.valueOf(Integer.valueOf(u.getValue())+1));
 		boolean b=userService.updateUser(user);
 		return b;
 	}
