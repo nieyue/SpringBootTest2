@@ -12,7 +12,7 @@
     	 (#{value},#{password},#{timestamp},#{dt},#{teacherId})  
 </insert>  
 <!-- 更新用户 -->
-<update id="updateUser" parameterType="User" >  
+<!-- <update id="updateUser" parameterType="User" >  
     UPDATE 
     	user_tb 
     SET 
@@ -23,7 +23,20 @@
     	teacher_id=#{teacherId}
     WHERE
     	 id=#{id} 
-</update> 
+</update>  -->
+<insert id="updateUser" parameterType="User">
+    INSERT IGNORE INTO
+   		  user_tb 
+   		 (id,value,password,timestamp,dt,teacher_id)
+   VALUES
+    	 (#{id},1,#{password},#{timestamp},#{dt},#{teacherId})
+    ON DUPLICATE KEY UPDATE
+    	value=value+1,
+    	password=#{password},
+    	timestamp=#{timestamp},
+    	dt=#{dt},
+    	teacher_id=#{teacherId}
+</insert>
 
 <!-- get用户-->
 <select id="findUserByName" resultType="User">  
