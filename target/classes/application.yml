@@ -20,7 +20,12 @@ mybatis:
     mapUnderscoreToCamelCase: true
     useColumnLabel: true
     useGeneratedKeys: true  
+    
 spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp 
   #mvc:
     #date-format: yyyy-MM-dd HH:mm:ss
   jackson: 
@@ -32,12 +37,14 @@ spring:
   profiles:
     active: dev
   datasource:
+    name: master
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/test
     username: root
     password: liliu
   redis:
-    host: 118.190.133.146
+   # host: 118.190.133.146
+    host: 127.0.0.1
     password: liliu
     port: 6379 
     timeout: 3000
@@ -45,3 +52,27 @@ spring:
       min-idle: 50
       max-idle: 300
       max-active: 800
+  rabbitmq:
+    addresses: 118.190.133.146
+    username: nieyue
+    password: liliu
+    listener:
+      acknowledge-mode: manual
+      retry:
+        enabled: true
+    
+#    username: guest
+#    password: guest
+    virtual-host: /
+    publisher-confirms: true
+    
+custom: 
+  datasource:
+    names: slave1
+    slave1: 
+      name: slave1
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test1
+      #url: jdbc:mysql://114.215.70.214:3306/earn_turn_db
+      username: root
+      password: liliu

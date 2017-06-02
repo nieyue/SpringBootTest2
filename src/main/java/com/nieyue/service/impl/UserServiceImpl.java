@@ -10,18 +10,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.nieyue.bean.User;
 import com.nieyue.dao.UserDao;
+import com.nieyue.datasource.TargetDataSource;
 import com.nieyue.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{
-	@Resource
-	UserDao userDao;
+	
+	@Resource UserDao userDao;
+	
+	@TargetDataSource(name="slave1")
 	@Override
 	public User findUserByName(Integer id, String value) {
 		User u = userDao.findUserByName(id, value);
 		return u;
 	}
-
+	//@TargetDataSource(name="slave1")
 	@Override
 	public List<User> browsePagingUser(String orderName, String orderWay, int pageNum, int pageSize) {
 		List<User> l = userDao.browsePagingUser(orderName, orderWay,pageNum-1,pageSize);

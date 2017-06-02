@@ -2,13 +2,10 @@ package com.nieyue.dao;
 
 import java.util.List;
 
-import com.nieyue.bean.User;
-
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+
+import com.nieyue.bean.User;
 
 @Mapper
 public interface UserDao {
@@ -24,6 +21,7 @@ public interface UserDao {
 /*	@Update("UPDATE user_tb "
 			+ "set value=value+1,password=#{password},timestamp=#{timestamp},dt=#{dt} "
 			+ "WHERE id=${id}")
-*/	public boolean updateUser(User user);
+*/
+	public boolean updateUser(User user);
 	
 }

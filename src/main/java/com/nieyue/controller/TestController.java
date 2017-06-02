@@ -1,9 +1,11 @@
 package com.nieyue.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -77,6 +79,10 @@ public class TestController {
 	public ModelAndView index(){
 		return new ModelAndView("index");
 	}
+	@RequestMapping("/jsp1")
+	public ModelAndView jsp(){
+		return new ModelAndView("jsp");
+	}
 	@Value("${myyml.name}")
 	String[] arrayProps; 
 	@RequestMapping("/tt")
@@ -94,9 +100,27 @@ public class TestController {
 		return date.toString();
 	}
 	@RequestMapping("/info")
-	public String getInfo(@RequestParam("info") String info){
+	public String getInfo(@RequestParam("info") String info,HttpServletRequest request) throws IOException, ServletException{
 		System.out.println(info);
-		return info.toString();
+		//String i=request.getLocalAddr();
+		String i=request.getRemoteAddr();
+		String getAuthType=request.getAuthType();
+		System.out.println(getAuthType);
+		String getCharacterEncoding=request.getCharacterEncoding();
+		System.out.println(getCharacterEncoding);
+		String getLocalName=request.getLocalName();
+		System.out.println(getLocalName);
+		String getPathTranslated=request.getPathTranslated();
+		System.out.println(getPathTranslated);
+		String getQueryString=request.getQueryString();
+		System.out.println(getQueryString);
+		String getRemoteUser=request.getRemoteUser();
+		System.out.println(getRemoteUser);
+		String getScheme=request.getScheme();
+		System.out.println(getScheme);
+		String getPathInfo=request.getPathInfo();
+		System.out.println(getPathInfo);
+		return i;
 	}
 	@RequestMapping("/session")
 	public String getInfo(HttpSession session){
